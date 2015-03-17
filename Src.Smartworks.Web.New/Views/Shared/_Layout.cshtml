@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @*@Styles.Render("~/bundles/assets/css")*@
+    @*@Styles.Render("~/bundles/assets/css/fonts")*@
+
+    @RenderSection("Css", false)
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datatable.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datepicker.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.animate.css" rel="stylesheet">
+
+    <script src="~/App_Scripts/js/vendor/jquery.min.js"></script>
+    <script src="~/App_Scripts/js/vendor/bootstrap.min.js"></script>
+
+    <script src="~/App_Scripts/js/vendor/angular/angular.js"></script>
+    <script src="~/App_Scripts/js/vendor/angular/angular-route.js"></script>
+    <script src="~/App_Scripts/js/vendor/angular/angular-resource.js"></script>
+    <script src="~/App_Scripts/js/vendor/angular/angular-animate.js"></script>
+    <script src="~/App_Scripts/js/vendor/angular/angular-cookies.js"></script>
+
+    <!-- ui-select files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+    <script src="~/App_Scripts/js/angularjs-ui-select/select.js"></script>
+
+    
+    <link href="~/App_Scripts/js/angularjs-ui-select/select.default.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">*@
+    <link href="~/App_Scripts/js/angularjs-ui-select/select.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+    <sun-notification></sun-notification>
+    @*<sun-header></sun-header>*@
+
+    <!--header starts-->
+    @Html.Partial("~/Views/Shared/partial/_header.cshtml")
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        </footer>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @*@Scripts.Render("~/bundles/assets/js/vendor")
+        @Scripts.Render("~/bundles/assets/js/vendor/angular")
+
+        @Scripts.Render("~/bundles/common/directives")
+        @Scripts.Render("~/bundles/app")*@
+
+    <script src="~/App_Scripts/customer.js"></script>
+
+    <script src="~/App_Scripts/common/directives/templates.js"></script>
+    <script src="~/App_Scripts/common/directives/gridview.js"></script>
+    <script src="~/App_Scripts/common/directives/dropdown.js"></script>
+    <script src="~/App_Scripts/common/directives/mask.js"></script>
+    <script src="~/App_Scripts/common/directives/form.js"></script>
+    <script src="~/App_Scripts/common/directives/match.js"></script>
+    <script src="~/App_Scripts/js/plugins.js"></script>
+
+
+    <!-- Services -->
+    <script src="~/App_Scripts/common/services/storage.js"></script>
+    <script src="~/App_Scripts/common/services/billtos.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

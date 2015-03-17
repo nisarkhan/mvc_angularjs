@@ -1,0 +1,222 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Employees Create</h2>
+
+<style>
+    body {
+        padding: 15px;
+    }
+
+    .selectize-control > .selectize-dropdown {
+        top: 36px;
+    }
+    hr.vertical
+{
+   width: 0px;
+   height: 100%; /* or height in PX */
+} 
+     .clear {
+      background:none;
+      color:#F0F1F5;
+      border:none;
+      cursor:pointer;
+      padding:3px 10px;
+      position:absolute;
+      right:30px;
+      top:4px;
+    }
+    
+</style>
+
+@section scripts {
+
+    @*<link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datatable.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datepicker.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.animate.css" rel="stylesheet">
+
+    <script src="~/assets/js/vendor/jquery.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="~/assets/js/vendor/angular/angular.js"></script>
+    <script src="~/assets/js/vendor/angular/angular-route.js"></script>
+    <script src="~/assets/js/vendor/angular/angular-resource.js"></script>
+    <script src="~/assets/js/vendor/angular/angular-animate.js"></script>
+    <script src="~/assets/js/vendor/angular/angular-cookies.js"></script>*@
+
+    @*<script src="~/App_Scripts/customer.js"></script>*@
+
+    <script src="~/App_Scripts/Controllers/EmployeesController.js"></script>
+
+    @*<script src="~/common/directives/templates.js"></script>
+        <script src="~/common/directives/gridview.js"></script>
+        <script src="~/common/directives/dropdown.js"></script>
+        <script src="~/common/directives/mask.js"></script>
+        <script src="~/common/directives/form.js"></script>
+        <script src="~/common/directives/match.js"></script>*@
+
+}
+
+{{50+6}}
+<div class="container" ng-controller="EmployeesCtrl">
+    @*<form name="ForgotPassword" ng-submit="SubmitEmployees()">*@
+    <form name="form" class="form-horizontal" ng-validate="SubmitEmployees(data)" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">First Name:</label>
+                                    <div class="col-xs-6">
+                                        <input name="first_name" type="text" class="form-control" ng-model="data.first_name" placeholder="First name" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.first_name.$error.required">Enter first name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Type:</label>
+                                    <div class="col-xs-6">
+                                        <select name="type" ng-model="payment.type0" ng-dropdown required>
+                                            <option ng-option value="Cash">Cash</option>
+                                            <option ng-option value="Check">Check</option>
+                                            <option ng-option value="Money Order">Money Order</option>
+                                            <option ng-option value="Debit Card">Debit Card</option>
+                                            <option ng-option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type0.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Country:{{3+6}}</label>
+                                    <div class="col-xs-6">
+                                         
+                                        <ui-select ng-model="countries.selected" theme="selectize" name="type" required
+                                                   ng-disabled="disabled" style="width: 250px;">
+                                            <ui-select-match placeholder="Select/search">
+                                                <span>{{$select.selected.name}}</span>
+                                                <button type="button" class="clear" ng-click="clear()"><span class="fa fa-times"></span></button>                                                
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="type in countries | filter: $select.search">
+                                                <span ng-bind-html="type.name | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                            <hr class="vertical" />
+                                        </ui-select>
+                                         
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         
+                        
+                        
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Last Name:</label>
+                                    <div class="col-xs-6">
+                                        <input name="last_name" type="text" class="form-control" ng-model="data.last_name" placeholder="Last name" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.last_name.$error.required">Enter last name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Username:</label>
+                                    <div class="col-xs-6">
+                                        <input name="username" type="text" class="form-control" ng-model="data.username" placeholder="Username" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.username.$error.required">Enter username.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Password:</label>
+                                    <div class="col-xs-6">
+                                        <!--<input name="password" type="text" class="form-control" ng-model="data.password" placeholder="Enter password" ng-required="true">-->
+                                        <input id="password" name="password" ng-model="data.password" class="form-control" placeholder="Password" ng-required="true" type="text" />
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.password.$error.required">Enter password.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Confirm Password:</label>
+                                    <div class="col-xs-6">
+                                        <input name="confirm_password" ng-model="data.confirm_password" class="form-control" placeholder="Confirm password" ng-required="true" type="text" match="data.password" />
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.confirm_password.$error.required">Enter confirm password.</div>
+                                        <div ng-show="form.confirm_password.$error.mismatch">
+                                            <span class="alert alert-warning">Password and confirm password must match.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-xs-6 control-label">Phone Number:</label>
+                            <div class="col-xs-6">
+                                <input name="value" type="text" class="form-control" ng-model="data.phone_number" ng-mask="phone" required>
+                                <div class="alert alert-danger" ng-show="form.$submitted && form.value.$error.required">Enter an phone number.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="row form-group">
+                                <label class="col-xs-6 control-label">Applied to late charge:</label>
+                                <div class="col-xs-6">
+
+                                    <input type="text" class="form-control" placeholder="0" ng-model="check_number" ng-mask="number" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label for="" class="col-xs-5 control-label">Date of Birth:</label>
+                                <div class="col-xs-7">
+                                    <div class="input-group date" ng-datepicker>
+                                        <input type="text" class="form-control" name="date_of_birth" ng-model="application.date_of_birth" required>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <div class="alert alert-danger" ng-show="form.$submitted && form.date_of_birth.$error.required">Enter a date of birth.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-right">
+            <div class="col-xs-12">
+                <button class="btn btn-default" type="submit">
+                    <span ng-if="$edit"> <i class="fa fa-refresh"></i>  Update Employee </span>
+                    <span ng-if="!$edit"> <i class="fa fa-plus"></i>  Add Employee </span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
